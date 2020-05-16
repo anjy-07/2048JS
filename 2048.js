@@ -176,18 +176,18 @@ let Game = {
             }     
     }
 }
-
 let initBoard = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0]
 ];
+
 document.addEventListener("keydown", handleKeyEvents);
 let scoreDiv = document.querySelector(".score");
-
+Game.init();
 function start() {  
-    Game.init();
+   
     Game.board = initBoard.map((arr) => arr.slice()) 
     Game.changed = false;
     Game.score=0
