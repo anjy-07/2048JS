@@ -1,0 +1,172 @@
+body {
+    height:100%;
+    margin:0;
+}
+
+.main-container {
+    height:100%;
+    width:100%;
+    position: fixed;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:2%;
+}
+
+.main-heading {
+    font-size: 2rem;
+    font-weight: bolder;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    color:grey;
+    text-align: center; 
+    padding: 2%;
+}
+
+h1{
+    display: inline;
+}
+.score-container {
+    font-size: 0.8em;
+    color: white;
+    font-weight: normal;
+    bottom : 2%;
+}
+
+.main-game-container {
+    background: #776E65;
+    cursor: pointer;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;    
+    width: 68vh;
+    height: 68vh;  
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.new-game {
+    background: #8f7a66;
+    border-radius: 3px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #f9f6f2;
+    height: 15%;
+    font-size: 1em;
+    float:right;
+    text-align: center;    
+}
+
+.grid-row {  
+    width: 100%;
+    height: calc(25% - 15px - 4px);  
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    margin-bottom: 15px;  
+}
+.grid-row:first-child{
+    margin-top: 15px;
+}
+.grid-cell {
+    display: table-cell;
+    height: 100%;
+    width: calc(25% - 15px);
+    margin-right: 15px;
+    background-color: rgba(238, 228, 218, 0.35);
+    z-index:100; 
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
+    border-radius: 6px;
+   
+}
+.grid-cell:first-child {
+    margin-left: 15px;
+}
+.grid-cell-active {
+    text-align: center;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 4.5em;
+    font-weight: bolder;
+    position: relative;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+.num2{
+    background: #eee4da;
+    color: #776E65;
+}
+
+.num4{
+    background: #eee1c9;
+    color: #776E65;    
+}
+
+.num8{
+    color: #f9f6f2;
+    background: #f3b27a;
+}
+
+.num16{
+    color: #f9f6f2;
+    background: #f69664;
+}
+
+.num32{
+    color: #f9f6f2;
+    background: #f67c5f;
+}
+
+.num64{
+    color: #f9f6f2;
+    background: #f65e3b; 
+}
+
+.num128{
+    color: #f9f6f2;
+    background: #edcf72;
+    font-size: 3.7em;
+}
+
+.num256{
+    color: #f9f6f2;
+    background: #edc850;
+    font-size: 3.7em;
+}
+
+.num512{
+    color: #f9f6f2;
+    background: #edc850;
+    font-size: 3.7em;
+}
+
+.num1024{
+    color: #f9f6f2;
+    background: #edc53f;
+    font-size: 3.7em;
+
+}
+
+.num2048{
+    color: #f9f6f2;
+    background: #edc22e;
+    font-size: 3em;
+}
+
+.num4096{
+    color: #f9f6f2;
+    background: #3c3a32;
+    font-size: 3em;
+}
+
+@media only screen and (max-width: 599px) {
+    .main-game-container{
+        width:40vh;
+        height: 40vh;
+    }
+    .grid-cell-active{
+        font-size:2.5em;
+    }
+  }
+
+
