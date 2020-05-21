@@ -186,8 +186,7 @@ let initBoard = [
 document.addEventListener("keydown", handleKeyEvents);
 let scoreDiv = document.querySelector(".score");
 Game.init();
-function start() {  
-   
+function start() {    
     Game.board = initBoard.map((arr) => arr.slice()) 
     Game.changed = false;
     Game.score=0
@@ -196,38 +195,111 @@ function start() {
     Game.mappingBoard(); 
 }
 
+function afterMoving() {
+    if(Game.changed)
+        Game.newBox();
+    Game.mappingBoard();
+    Game.empty()  
+    scoreDiv.innerHTML = Game.score
+}
 function handleKeyEvents(e) {
     Game.changed = false;
     if(e.keyCode === 39){
         Game.moveRight()
-        if(Game.changed)
-            Game.newBox();
-        Game.mappingBoard();
-        Game.empty()
+        afterMoving()
     }else if(e.keyCode === 37){
         Game.moveLeft()
-        if(Game.changed)
-            Game.newBox();
-        Game.mappingBoard();
-        Game.empty()      
+        afterMoving()     
     }else if(e.keyCode === 38){
         Game.moveUp()
         Game.transpose()
-        if(Game.changed)
-            Game.newBox();
-        Game.mappingBoard();
-        Game.empty()
-       
+        afterMoving() 
     }else if(e.keyCode === 40){
         Game.moveDown()
         Game.transpose()
-        if(Game.changed)
-            Game.newBox();
-        Game.mappingBoard();
-        Game.empty()      
-    }
-    scoreDiv.innerHTML = Game.score
+        afterMoving()  
+    }  
 }
 
 
+// touch events
+
+let board  = document.querySelector(".main-game-container");
+
+let startX = null,
+    startY = null,
+    direction = null;
+
+	board.addEventListener("touchstart", function(event) {
+		var toucheStart = event.touches;
+		if (toucheStart.length > 1)
+			return;
+
+		// Start position
+		startX = toucheStart[0].clientX;
+		startY = toucheStart[0].clientY;
+	}, false);
+
+	board.addEventListener("touchmove", function(event) {
+		event.preventDefault();
+	}, false);
+
+	board.addEventListener("touchend", function(event) {
+		if (!startX || !startY)
+			return;
+
+		var touchEnd = event.changedTouches;
+		if (touchEnd.length > 1)
+			return;
+
+		// End position
+		var endX = touchEnd[0].clientX,
+			endY = touchEnd[0].clientY;
+
+		// Distance moved
+		var diffX = endX - startX,
+			diffY = endY - startY;
+
+		// Test direction to slide
+		if (Math.abs(diffX) > Math.abs(diffY)) {
+			if (diffX > 0)
+				direction = "right";
+			else if (diffX < 0)
+				direction = "left";
+		} else {
+			if (diffY > 0)
+				direction = "down";
+			else if (diffY < 0)
+				direction = "up";
+		}
+
+		// Move in specific direction
+		if (direction) {
+            Game.changed = false;
+            if(direction === "right"){
+                Game.moveRight()
+                afterMoving()
+            }else  if(direction === "left"){
+                Game.moveLeft()
+                afterMoving()     
+            }else  if(direction === "up"){
+                Game.moveUp()
+                Game.transpose()
+                afterMoving() 
+            }else  if(direction === "down"){
+                Game.moveDown()
+                Game.transpose()
+                afterMoving()  
+            }  
+		}
+
+		// Reset
+		startX = null;
+		startY = null;
+		direction = null;
+	}, false);
+
 start();
+
+
+
