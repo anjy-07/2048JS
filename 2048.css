@@ -35,14 +35,12 @@ h1{
 
 .main-game-container {
     background: #776E65;
-    cursor: pointer;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    user-select: none;    
-    width: 68vh;
-    height: 68vh;  
-    z-index: 1;
-    border-radius: 4px;
+    cursor: pointer;   
+    width: 60vh;
+    height: 60vh;  
+    border-radius: 5px;
+    padding: 4px;
+    display: table;
 }
 
 .new-game {
@@ -69,42 +67,42 @@ h1{
     margin-top: 15px;
 }
 .grid-cell {
-    display: table-cell;
+  
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 2.5em;
+    font-weight: bolder;
+    position: relative;
     height: 100%;
     width: calc(25% - 15px);
     margin-right: 15px;
     background-color: rgba(238, 228, 218, 0.35);
     z-index:100; 
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
-    border-radius: 6px;
+    border-radius: 6px;  
    
 }
 .grid-cell:first-child {
     margin-left: 15px;
 }
-.grid-cell-active {
+
+.num{
     text-align: center;
-    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-    font-size: 4.5em;
-    font-weight: bolder;
-    position: relative;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    user-select: none;
+    line-height: 2em;
 }
 .num2{
     background: #eee4da;
-    color: #776E65;
+    color: #776E65;   
 }
+
 
 .num4{
     background: #eee1c9;
-    color: #776E65;    
+    color: #776E65;   
 }
 
 .num8{
     color: #f9f6f2;
-    background: #f3b27a;
+    background: #f3b27a; 
 }
 
 .num16{
@@ -125,48 +123,46 @@ h1{
 .num128{
     color: #f9f6f2;
     background: #edcf72;
-    font-size: 3.7em;
 }
 
 .num256{
     color: #f9f6f2;
-    background: #edc850;
-    font-size: 3.7em;
+    background: #edc850;  
 }
 
 .num512{
     color: #f9f6f2;
     background: #edc850;
-    font-size: 3.7em;
 }
 
 .num1024{
     color: #f9f6f2;
     background: #edc53f;
-    font-size: 3.7em;
-
 }
 
 .num2048{
     color: #f9f6f2;
-    background: #edc22e;
-    font-size: 3em;
+    background: #edc22e; 
 }
 
 .num4096{
     color: #f9f6f2;
     background: #3c3a32;
-    font-size: 3em;
 }
+
 
 @media only screen and (max-width: 599px) {
     .main-game-container{
         width:40vh;
         height: 40vh;
     }
-    .grid-cell-active{
-        font-size:2.5em;
+    .grid-cell{
+        font-size:1em;
     }
+    .num{
+        line-height: 3em;
+    }
+   
   }
 
 

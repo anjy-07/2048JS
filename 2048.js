@@ -166,11 +166,12 @@ let Game = {
                 cell.className='';
                 cell.innerHTML='';
                 cell.classList.add('grid-cell');
-                if(this.board[i][j]) {             
-                    cell.classList.add("grid-cell-active")
+                if(this.board[i][j]) {        
+                    //cell.classList.add("grid-cell-active")
                     cell.classList.add(`num${this.board[i][j]}`)
-                    let newCell = document.createElement('span');
-                    newCell.innerText= this.board[i][j];
+                    let newCell = document.createElement('div');
+                    newCell.classList.add('num');
+                    newCell.innerHTML= this.board[i][j];
                     cell.appendChild(newCell)
                 }
             }     
@@ -234,7 +235,6 @@ let startX = null,
 		var toucheStart = event.touches;
 		if (toucheStart.length > 1)
 			return;
-
 		// Start position
 		startX = toucheStart[0].clientX;
 		startY = toucheStart[0].clientY;
@@ -251,7 +251,6 @@ let startX = null,
 		var touchEnd = event.changedTouches;
 		if (touchEnd.length > 1)
 			return;
-
 		// End position
 		var endX = touchEnd[0].clientX,
 			endY = touchEnd[0].clientY;
@@ -272,7 +271,6 @@ let startX = null,
 			else if (diffY < 0)
 				direction = "up";
 		}
-
 		// Move in specific direction
 		if (direction) {
             Game.changed = false;
